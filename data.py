@@ -1,5 +1,11 @@
-import menu
+import main
 from lxml import etree
+
+def getName ( html ) :#菜名
+    s = etree.HTML( html )
+    name = s.xpath ( '//h1[@class="title"]//a/text()')
+    name = name[ 0 ]
+    return name#ok
 
 def getHow( html ) :#工艺
     s = etree.HTML( html )
@@ -34,7 +40,5 @@ def getMakings ( html ) :#材料
     return makings#ok
 
 url = "http://www.meishij.net/zuofa/qingzhenghuanyu_2.html"
-html = menu.getUrl( url )
-print ( getHow( html ) )
-print ( getTaste( html ) )
-print ( getMakings( html ) )
+html = main.getUrl( url )
+print ( getName( html ) )
