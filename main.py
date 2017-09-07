@@ -12,9 +12,18 @@ def getUrl ( url ) :
     return html.text
 
 def setPath ( name ) :
-    pass
+    path = r"D:/H5_new//" + str ( name )
+    try :
+        os.mkdir( path )
+    except:
+        print ( "error" )
+    return path
 
-def getDownload( urls , path ) :
-    count = 0
-    for i in urls :
-        pass
+def getDownload( urls , path , name ) :
+    count = 1
+    for url in urls :
+        filename = os.path.join( path ,  str( name ) + str ( count ) + ".jpg" )
+        try:
+            urllib.request.urlretrieve( url , filename )
+        except:
+            print( "download error" )
